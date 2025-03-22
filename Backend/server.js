@@ -26,6 +26,9 @@ connection.once("open", () => {
 
 });
 
+const shoppingListRouter = require("./routes/ShoppingList");
+app.use("/shoppinglist",shoppingListRouter);
+
 app.listen(PORT, () =>{
     console.log(`Server is up and running on port : ${PORT}`);
 });
