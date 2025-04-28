@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useReactToPrint } from "react-to-print";
 import axios from "axios";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 export default function List() {
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const componentsRef = useRef(null);
+    const componentRef = useRef();
 
     useEffect(() => {
         axios.get("http://localhost:9080/shoppinglist/")
@@ -19,12 +20,20 @@ export default function List() {
             });
     }, []);
 
-    // ✅ Properly initialize useReactToPrint outside of event handlers
-    const handlePrint = useReactToPrint({
-        content: () => componentsRef.current,
-        documentTitle: "Shopping List Report",
-        onAfterPrint: () => alert("Report Downloaded!"),
-    });
+    const handleDownloadPdf = () => {
+        const input = componentRef.current;
+
+        html2canvas(input, { scale: 2 }).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4'); // portrait, millimeters, A4 size
+
+            const imgWidth = 210; // A4 width in mm
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save('shopping-list-report.pdf');
+        });
+    };
 
     if (loading) {
         return (
@@ -40,9 +49,9 @@ export default function List() {
     return (
         <div className="container mt-5">
             <h1 className="text-center mb-4 display-4">Shopping List Report</h1>
-            
-            {/* ✅ Wrap the printable content inside a div with the ref */}
-            <div ref={componentsRef}>
+
+            {/* Capture this div as PDF */}
+            <div ref={componentRef} className="p-4 bg-white">
                 <div className="card shadow">
                     <div className="card-body">
                         <table className="table table-striped table-hover table-bordered">
@@ -75,10 +84,10 @@ export default function List() {
                 </div>
             </div>
 
-            {/* ✅ Correct way to trigger printing */}
+            {/* Download Button */}
             <div className="text-center mt-4">
-                <button onClick={handlePrint} className="btn btn-primary mt-2">
-                    Download Report
+                <button onClick={handleDownloadPdf} className="btn btn-success mt-2">
+                    Download PDF
                 </button>
             </div>
         </div>
