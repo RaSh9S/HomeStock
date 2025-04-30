@@ -15,7 +15,7 @@ function Header(){
                   height="30"
                   className="d-inline-block align-text-top me-2"
               />
-              Shopping List
+              StockMate
           </a>
   
           
@@ -37,6 +37,12 @@ function Header(){
                   <li className="nav-item">
                       <a className="nav-link active" aria-current="page" href="/">
                           Smart Shoppinhg
+                      </a>
+                  </li>
+
+                  <li className="nav-item">
+                      <a className="nav-link active" aria-current="page" href="/keells">
+                          Online Prices
                       </a>
                   </li>
 
