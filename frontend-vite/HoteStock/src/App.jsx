@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-import Header from './components/header'
+
 import AddItemList from './components/addItem'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Header />
+        
         
         <Routes> 
         
@@ -26,4 +26,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
