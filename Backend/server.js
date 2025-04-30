@@ -35,6 +35,9 @@ app.use("/item",itemRouter);
 const scrapeRoutes = require('./routes/Scraper');
 app.use('/api', scrapeRoutes);
 
+const budgetportalRouter = require("./routes/budgetPortal");
+app.use("/budgetportal", budgetportalRouter);
+
 app.listen(PORT, () =>{
     console.log(`Server is up and running on port : ${PORT}`);
 });
