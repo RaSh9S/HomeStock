@@ -47,6 +47,12 @@ function Header(){
                   </li>
 
                   <li className="nav-item">
+                      <a className="nav-link" href="/home">
+                          Insight Dashboard
+                      </a>
+                  </li>
+
+                  <li className="nav-item">
                       <a className="nav-link" href="#">
                           Inventory
                       </a>
