@@ -1,0 +1,199 @@
+.dashboard-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .title-container {
+    text-align: center;
+    width: 100%;
+  }
+
+.dashboard-header h1 {
+    color: #27374d;
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+/* Notification Container Styles */
+.notify-container {
+    position: fixed;
+    top: 35px;
+    right: 30px;
+    z-index: 1000;
+}
+
+/* Notification Icon Button Styles */
+.notify {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notify:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.notify .icon {
+    font-size: 24px;
+    color: #27374d;
+}
+
+/* Notification Badge Styles */
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(50%, -50%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Dropdown Menu Styles */
+.notifications-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+/* Notification Items Styles */
+.notification-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background: #f5f5f5;
+}
+
+.notification-item.unread {
+    background: #e3f2fd;
+    position: relative;
+}
+
+.notification-item.unread::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: #2196f3;
+}
+
+.notification-item p {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.notification-item small {
+    color: #666;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Empty State Styles */
+.no-notifications {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Scrollbar Styles */
+.notifications-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notifications-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+.notifications-dropdown::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+}
+
+.notifications-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .notify-container {
+        top: 15px;
+        right: 20px;
+    }
+
+    .notifications-dropdown {
+        width: 280px;
+        right: -10px;
+    }
+
+    .notify .icon {
+        font-size: 20px;
+    }
+}
+
+.notification-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+    margin-left: 10px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+}
+
+.notification-item > div {
+    flex: 1;
+    cursor: pointer;
+}

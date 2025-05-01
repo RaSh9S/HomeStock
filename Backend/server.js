@@ -38,6 +38,9 @@ app.use('/api', scrapeRoutes);
 const budgetportalRouter = require("./routes/budgetPortal");
 app.use("/budgetportal", budgetportalRouter);
 
+const notificationsRouter = require("./routes/notification");
+app.use("/notifications", notificationsRouter);
+
 app.listen(PORT, () =>{
     console.log(`Server is up and running on port : ${PORT}`);
 });
